@@ -10,6 +10,7 @@ module.exports = {
       'neutral-300': '#9797A1',
       'neutral-200': '#DEDEE3',
       'neutral-100': '#CFCFDE',
+      white: '#FFFFF',
     },
     extend: {
       spacing: {
