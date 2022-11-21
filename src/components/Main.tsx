@@ -8,11 +8,11 @@ import { FAQ } from './FAQ';
 export const Main = () => {
   return (
     <main>
-      <About></About>
-      <Workouts></Workouts>
-      <Pricing></Pricing>
-      <Testimonals></Testimonals>
-      <FAQ></FAQ>
+      <About />
+      <Workouts />
+      <Pricing />
+      <Testimonals />
+      <FAQ />
     </main>
   );
 };
