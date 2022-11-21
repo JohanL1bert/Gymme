@@ -83,4 +83,11 @@
     text-align: center;
     color: theme('colors.neutral-500');
   }
+
+  .arrow {
+    /*     display: inline-block;
+    border: solid yellow;
+    border-width: 0 3px 3px 0;
+    padding: 7px; */
+  }
 }
