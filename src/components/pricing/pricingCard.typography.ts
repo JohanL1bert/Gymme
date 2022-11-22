@@ -1,16 +1,16 @@
 export const pricingCardTypography = {
   white: {
-    color: '',
-    sizeW: '',
+    color: 'cardWhite',
+    sizeW: '[calc(theme(spacing.96)+21px)]',
     sizeH: '',
     paddingX: '',
-    paddingY: '',
+    paddingY: '21px',
   },
   black: {
-    color: '',
+    color: 'cardBlack',
     sizeW: '',
     sizeH: '',
     paddingX: '',
-    paddingY: '',
+    paddingY: '21px',
   },
 };

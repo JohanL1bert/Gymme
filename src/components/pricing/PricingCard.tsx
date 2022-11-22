@@ -26,7 +26,7 @@ export const PricingCard = ({
   chooseCardStyle(cardDetails.styleCard, cardStylish);
 
   return (
-    <div>
+    <div className="w-[calc(theme(spacing.96)+21px)]">
       <div>{cardDetails.heading}</div>
       <div>
         <div>

@@ -11,6 +11,8 @@ module.exports = {
       'neutral-200': '#DEDEE3',
       'neutral-100': '#CFCFDE',
       white: '#FFFFF',
+      cardWhite: 'rgba(19, 19, 22, 0.05)',
+      cardBlack: 'neutral-500',
     },
     extend: {
       spacing: {

@@ -84,6 +84,14 @@
     color: theme('colors.neutral-500');
   }
 
+  .footer_text {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
   .hover_navbar:hover {
     background-color: theme('colors.white');
   }
