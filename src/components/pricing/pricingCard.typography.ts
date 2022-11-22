@@ -3,10 +3,14 @@ export const pricingCardTypography = {
     color: '',
     sizeW: '',
     sizeH: '',
+    paddingX: '',
+    paddingY: '',
   },
   black: {
     color: '',
     sizeW: '',
     sizeH: '',
+    paddingX: '',
+    paddingY: '',
   },
 };

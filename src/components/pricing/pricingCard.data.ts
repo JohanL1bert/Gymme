@@ -1,4 +1,14 @@
-export const pricingCardData = [
+export type TCardKeys = 'black' | 'white';
+
+export interface ICardDetails {
+  heading: string;
+  id: number;
+  price: string;
+  services: Array<{ features: string }>;
+  styleCard: TCardKeys;
+}
+
+export const pricingCardData: Array<ICardDetails> = [
   {
     id: 1,
     heading: 'Basic',

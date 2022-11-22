@@ -1,5 +1,6 @@
 import React from 'react';
 import { chooseCardStyle } from '../../helpers/chooseCardStyle';
+import { ICardDetails, TCardKeys } from '../pricing/pricingCard.data';
 
 interface ICardColorSize {
   color: string;
@@ -7,20 +8,13 @@ interface ICardColorSize {
   sizeH: string;
 }
 
-type TCardKeys = 'black' | 'white';
-
 type TCardStylish = {
   // eslint-disable-next-line no-unused-vars
   [key in TCardKeys]: ICardColorSize;
 };
 
-interface ICardDetails {
-  heading: string;
-  id: number;
-  price: string;
-  services: Array<{ features: string }>;
-  styleCard: string;
-}
+export interface ICardChooseDetails extends TCardStylish {}
+export type TCardIndexSignature = TCardKeys;
 
 export const PricingCard = ({
   cardStylish,
