@@ -84,6 +84,10 @@
     color: theme('colors.neutral-500');
   }
 
+  .hover_navbar:hover {
+    background-color: theme('colors.white');
+  }
+
   .arrow {
     /*     display: inline-block;
     border: solid yellow;

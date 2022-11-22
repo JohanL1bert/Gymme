@@ -50,3 +50,9 @@ export const signUpTypography = {
     },
   },
 };
+
+type Nullable<T> = {
+  [P in keyof T]: T[P] | null;
+};
+
+export type TSignUpBtnTypo = Nullable<typeof signUpTypography.medium.simple>;
