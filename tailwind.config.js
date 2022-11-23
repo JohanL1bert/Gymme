@@ -21,6 +21,9 @@ module.exports = {
         LARGE: '80px',
         XLARGE: '180px',
       },
+      backgroundImage: {
+        aboutImg: 'url(assets/icons/Team_Icon.svg)',
+      },
     },
   },
   plugins: [],
