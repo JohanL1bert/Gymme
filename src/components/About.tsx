@@ -6,7 +6,7 @@ export const About = () => {
       <div className="flex justify-center items-center">
         <div className="w-[calc(theme(spacing.96)+theme(spacing.96))] h-[calc(theme(spacing.96)+44px)]">
           <div className="relative h-[calc(theme(spacing.36)+6px)]">
-            <div className="absolute h-[calc(theme(spacing.28)+8px)] w-[calc(theme(spacing.36)+6px)] left-0 bg-aboutImg" />
+            <div className="absolute h-[calc(theme(spacing.28)+8px)] w-[calc(theme(spacing.36)+6px)] left-0 bg-aboutImg bg-cover bg-no-repeat" />
             <h2 className="H2 absolute left-[calc(theme(spacing.16)+6px)] top-9">
               Our mission
               <span className="text-primary-200">.</span>

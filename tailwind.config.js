@@ -23,6 +23,8 @@ module.exports = {
       },
       backgroundImage: {
         aboutImg: 'url(assets/icons/Team_Icon.svg)',
+        trainingImg: 'url(assets/icons/Calendar_Icon.svg)',
+        priceImg: 'url(assets/icons/PriceTag_Icon.svg)',
       },
     },
   },

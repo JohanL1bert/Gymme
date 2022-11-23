@@ -1,5 +1,5 @@
 import React from 'react';
 
 export const WorkoutSlider = () => {
-  return <div>WorkoutSlider</div>;
+  return <div className="mt-20">WorkoutSlider</div>;
 };

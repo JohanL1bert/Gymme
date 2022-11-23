@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* #FIXME: change inter font */
+
 @layer components {
   .H1 {
     font-family: 'Inter';

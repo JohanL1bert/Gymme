@@ -11,8 +11,8 @@ export const FAQuestions = ({
 }) => {
   return (
     <div>
-      <div>
-        <h3>{heading}</h3>
+      <div className="h-6 w-[calc(theme(spacing.96)+theme(spacing.80)+4px)]">
+        <h6>{heading}</h6>
         <button>2</button>
       </div>
       <div>
