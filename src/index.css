@@ -1,3 +1,107 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* #FIXME: change inter font */
+
+@layer components {
+  .H1 {
+    font-family: 'Inter';
+    font-weight: 800;
+    font-size: 60px;
+    line-height: 62px;
+    text-align: center;
+    color: theme('colors.neutral-500');
+  }
+
+  .H2 {
+    font-family: 'Inter';
+    font-weight: 800;
+    font-size: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: theme('colors.neutral-500');
+  }
+
+  .H3 {
+    font-family: 'Inter';
+    font-weight: 800;
+    font-size: 38px;
+    line-height: 46px;
+    text-align: center;
+    color: theme('colors.neutral-500');
+  }
+
+  .H4 {
+    font-family: 'Inter';
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 46px;
+    text-align: center;
+    color: theme('colors.neutral-500');
+  }
+
+  .H5 {
+    font-family: 'Inter';
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+    color: theme('colors.neutral-500');
+  }
+
+  .H6 {
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    text-align: center;
+    color: theme('colors.neutral-500');
+  }
+
+  .body_large {
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 34px;
+    text-align: center;
+    color: theme('colors.neutral-500');
+  }
+
+  .body_medium {
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 32px;
+    text-align: center;
+    color: theme('colors.neutral-500');
+  }
+
+  .body_small {
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    text-align: center;
+    color: theme('colors.neutral-500');
+  }
+
+  .footer_text {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .hover_navbar:hover {
+    background-color: theme('colors.white');
+  }
+
+  .arrow {
+    /*     display: inline-block;
+    border: solid yellow;
+    border-width: 0 3px 3px 0;
+    padding: 7px; */
+  }
+}
