@@ -4,7 +4,7 @@ import { FAQuestions } from './faqQuestions/FAQuestions';
 
 export const FAQ = () => {
   return (
-    <div className="H1">
+    <div className="H1 h-[1000px]">
       {faQuestionsData.map((item) => (
         <FAQuestions key={item.id} {...item} />
       ))}

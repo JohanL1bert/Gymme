@@ -5,7 +5,7 @@ import { Logo } from './logo/Logo';
 
 export const Navbar = () => {
   return (
-    <div className="flex justify-evenly items-center h-20">
+    <nav className="flex justify-evenly items-center h-20">
       <Logo />
       <ul className="flex w-[calc(theme(spacing.96)+theme(spacing.36))] justify-between h-5 items-center">
         <li className="hover_navbar">
@@ -33,6 +33,6 @@ export const Navbar = () => {
         </button>
         <SignUp btnStyle={signUpTypography.medium.green} />
       </div>
-    </div>
+    </nav>
   );
 };
