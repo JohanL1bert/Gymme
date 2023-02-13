@@ -5,9 +5,9 @@ import { Logo } from './logo/Logo';
 
 export const Navbar = () => {
   return (
-    <nav className="flex justify-evenly items-center h-20">
+    <nav className="flex justify-evenly items-center h-20 bg-neutral-500">
       <Logo />
-      <ul className="flex w-[calc(theme(spacing.96)+theme(spacing.36))] justify-between h-5 items-center">
+      <ul className="flex w-[calc(theme(spacing.96)+theme(spacing.36))] justify-between h-5 items-center relative z-10">
         <li className="hover_navbar">
           <a href="#">Home</a>
         </li>
