@@ -11,6 +11,7 @@ const enumColors = Object.freeze({
 
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
+
   theme: {
     colors: {
       'primary-100': enumColors.primary100,
@@ -24,6 +25,10 @@ module.exports = {
       white: '#FFFFFF',
       cardWhite: 'rgba(19, 19, 22, 0.05)',
       cardBlack: enumColors.neutral500,
+      aqua: '#34ebeb',
+      violet: '#9b34eb',
+      pink: '#eb349b',
+      yellow: '#ebdb34',
     },
     extend: {
       spacing: {
