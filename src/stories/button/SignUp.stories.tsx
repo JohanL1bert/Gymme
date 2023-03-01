@@ -1,16 +1,8 @@
-/* eslint-disable no-unused-vars */
+import React from 'react';
 import { SignUp } from './SignUp';
-import { StoryObj, Meta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-type TSignUp = StoryObj<typeof SignUp>;
-enum EVisual {
-  DEFAULT = 'default',
-  PRIMARY = 'primary',
-  SECONDARY = 'secondary',
-  OUTLINED = 'outlined',
-}
-
-export type TVisualBtn = `${EVisual}`;
+type TSignUp = ComponentStory<typeof SignUp>;
 
 const bgColors = [
   'white',
@@ -25,18 +17,6 @@ export default {
   title: 'Button/SignUp',
   component: SignUp,
   argTypes: {
-    /*     visualBtn: {
-      description: 'visual of button sign up: border, color, outlined',
-      control: {
-        type: 'select',
-        options: [
-          EVisual.DEFAULT,
-          EVisual.PRIMARY,
-          EVisual.SECONDARY,
-          EVisual.OUTLINED,
-        ],
-      },
-    }, */
     size: {
       description: 'Button size',
       control: 'radio',
@@ -60,9 +40,45 @@ export default {
       },
     },
   },
-} as Meta<typeof SignUp>;
+} as ComponentMeta<typeof SignUp>;
 
-export const SignUpDefault: TSignUp = {
+export const Template: TSignUp = (args) => <SignUp {...args} />;
+
+export const SignUpDefault = Template.bind({});
+SignUpDefault.args = {
+  size: 'medium',
+  textColor: 'black',
+  border: 'rounded',
+  bgColor: 'white',
+};
+
+export const SignUpPrimary = Template.bind({});
+SignUpPrimary.args = {
+  size: 'medium',
+  text: 'Sign Up',
+  textColor: 'white',
+  border: 'none',
+  bgColor: 'green',
+};
+
+export const SignUpSecondary = Template.bind({});
+SignUpSecondary.args = {
+  size: 'medium',
+  text: 'Sign Up',
+  textColor: 'black',
+  border: 'none',
+  bgColor: 'white',
+};
+
+export const SignUpOutlined = Template.bind({});
+SignUpOutlined.args = {
+  size: 'medium',
+  text: 'Sign Up',
+  textColor: 'black',
+  border: 'rounded',
+  bgColor: 'white',
+};
+/* export const SignUpDefault: TSignUp = {
   args: {
     size: 'medium',
     textColor: 'black',
@@ -100,3 +116,4 @@ export const SignUpOutlined: TSignUp = {
     bgColor: 'white',
   },
 };
+ */
