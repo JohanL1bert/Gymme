@@ -1,5 +1,8 @@
+import React from 'react';
 import { Badge } from './Badge';
-import { ComponentMeta, StoryObj } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+
+type TBadgeStory = ComponentStory<typeof Badge>;
 
 export default {
   title: 'UI/BadgeButton',
@@ -21,23 +24,25 @@ export default {
   },
 } as ComponentMeta<typeof Badge>;
 
-type TBadge = StoryObj<typeof Badge>;
+const Template: TBadgeStory = (args) => <Badge {...args} />;
 
-export const DefaultBtn: TBadge = {
-  args: {
-    visualBtn: null,
-    label: 'default',
-  },
+export const DefaultBtn = Template.bind({});
+DefaultBtn.args = {
+  visualBtn: 'dark',
+  label: 'default',
+  size: 'medium',
 };
-export const BlackBtn: TBadge = {
-  args: {
-    visualBtn: 'dark',
-    label: 'Premium',
-  },
+
+export const BlackBtn = Template.bind({});
+BlackBtn.args = {
+  visualBtn: 'dark',
+  label: 'Premium',
+  size: 'medium',
 };
-export const whiteBtn: TBadge = {
-  args: {
-    visualBtn: 'white',
-    label: 'Premium',
-  },
+
+export const WhiteBtn = Template.bind({});
+WhiteBtn.args = {
+  visualBtn: 'white',
+  label: 'Premium',
+  size: 'medium',
 };

@@ -1,20 +1,22 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import classnames from 'classnames';
-import { buttonData } from './signUp.data';
+import { signUpButtonData } from './signUp.data';
+import { getValueFromKeysObject } from 'helpers/getValueFromKeysObject';
 
 interface IBtnStyles {
-  size: 'medium' | 'large';
+  size?: 'medium' | 'large';
   text?: string;
-  bgColor: string | undefined;
+  bgColor?: string | undefined;
   backgroundColor?: any;
-  textColor: 'white' | 'black';
-  border: 'none' | 'rounded';
+  padding?: 'medium' | 'large';
+  textColor?: 'white' | 'black';
+  border?: 'none' | 'rounded';
   children?: React.ReactNode;
 }
-const { btnSize, btnBorder, textCol, btnCol } = buttonData;
+const { btnPadding, btnBorder, textCol, btnCol } = signUpButtonData;
 
-export const SignUp = ({
+export const SignUp: React.FC<IBtnStyles> = ({
   size = 'medium',
   text = 'button',
   bgColor,
@@ -22,22 +24,15 @@ export const SignUp = ({
   textColor = 'black',
   ...props
 }: IBtnStyles) => {
-  console.log(bgColor, 'bgColor');
   return (
     <button
       className={classnames(
         btnBorder[border],
         textCol[textColor],
-        /*  btnCol[bgColor as keyof typeof btnCol] */
-        bgColor
+        btnCol[bgColor as keyof typeof btnCol]
       )}
-      style={
-        (bgColor as any) && {
-          backgroundColor: bgColor,
-        }
-      }
     >
-      <div className={classnames(btnSize[size])}>{text.toUpperCase()}</div>
+      <div className={classnames(btnPadding[size])}>{text.toUpperCase()}</div>
     </button>
   );
 };

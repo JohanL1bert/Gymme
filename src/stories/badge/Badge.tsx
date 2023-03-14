@@ -1,28 +1,35 @@
 import React from 'react';
 import classNames from 'classnames';
-import { badgeTypography } from './badge.typography';
+import { badgeData } from './badge.data';
+import { getValueFromKeysObject } from 'helpers/getValueFromKeysObject';
 
-type TBadge = {
-  visualBtn: 'dark' | 'white';
-  label: string;
-  type: 'button' | 'submit' | 'reset';
+export type TBadge = {
+  visualBtn?: 'dark' | 'white';
+  label?: string;
+  type?: 'button' | 'submit' | 'reset';
+  size?: 'small' | 'medium' | 'big';
   children?: React.ReactNode;
   onClick?: () => void;
 };
 
+const { badgeSize, badgeStyle } = badgeData;
+
 export const Badge = ({
   visualBtn = 'dark',
-  label = '',
+  label = 'premium',
+  size = 'medium',
   type = 'button',
+  onClick,
+  ...props
 }: TBadge) => {
+  getValueFromKeysObject([visualBtn, size], badgeData);
+
   return (
     <div>
       <button
+        onClick={onClick}
         type={type}
-        className={classNames(
-          'border-none w-[88px] h-[26px] rounded-[1px]',
-          badgeTypography[visualBtn]
-        )}
+        className={classNames(badgeSize[size], badgeStyle[visualBtn])}
       >
         {label}
       </button>
