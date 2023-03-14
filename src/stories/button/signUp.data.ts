@@ -1,4 +1,4 @@
-const btnSize = {
+const btnPadding = {
   medium: 'px-[30px] py-[12px]',
   large: 'px-[40px] py-[14px]',
 };
@@ -22,8 +22,8 @@ const textCol = {
   black: 'text-neutral-500',
 };
 
-export const buttonData = {
-  btnSize,
+export const signUpButtonData = {
+  btnPadding,
   btnBorder,
   textCol,
   btnCol,

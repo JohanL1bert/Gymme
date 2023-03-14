@@ -50,6 +50,7 @@ SignUpDefault.args = {
   textColor: 'black',
   border: 'rounded',
   bgColor: 'white',
+  padding: 'medium',
 };
 
 export const SignUpPrimary = Template.bind({});
@@ -59,6 +60,7 @@ SignUpPrimary.args = {
   textColor: 'white',
   border: 'none',
   bgColor: 'green',
+  padding: 'medium',
 };
 
 export const SignUpSecondary = Template.bind({});
@@ -68,6 +70,7 @@ SignUpSecondary.args = {
   textColor: 'black',
   border: 'none',
   bgColor: 'white',
+  padding: 'medium',
 };
 
 export const SignUpOutlined = Template.bind({});
@@ -77,43 +80,5 @@ SignUpOutlined.args = {
   textColor: 'black',
   border: 'rounded',
   bgColor: 'white',
+  padding: 'medium',
 };
-/* export const SignUpDefault: TSignUp = {
-  args: {
-    size: 'medium',
-    textColor: 'black',
-    border: 'rounded',
-    bgColor: 'white',
-  },
-};
-
-export const SignUpPrimary: TSignUp = {
-  args: {
-    size: 'medium',
-    text: 'Sign Up',
-    textColor: 'white',
-    border: 'none',
-    bgColor: 'green',
-  },
-};
-
-export const SignUpSecondary: TSignUp = {
-  args: {
-    size: 'medium',
-    text: 'Sign Up',
-    textColor: 'black',
-    border: 'none',
-    bgColor: 'white',
-  },
-};
-
-export const SignUpOutlined: TSignUp = {
-  args: {
-    size: 'medium',
-    text: 'Sign Up',
-    textColor: 'black',
-    border: 'rounded',
-    bgColor: 'white',
-  },
-};
- */

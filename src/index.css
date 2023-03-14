@@ -94,8 +94,8 @@
     line-height: 18px;
   }
 
-  .hover_navbar:hover {
-    background-color: theme('colors.white');
+  .hover_navbar {
+    color: theme('colors.white');
   }
 
   .arrow {
@@ -103,5 +103,71 @@
     border: solid yellow;
     border-width: 0 3px 3px 0;
     padding: 7px; */
+  }
+  .workout_card:nth-child(odd) {
+    @apply w-[theme(spacing.80)] h-[calc(theme(spacing.80)+30px)];
+  }
+
+  .workout_card:nth-child(even) {
+    @apply w-[theme(spacing.80)] h-[calc(theme(spacing.80))];
+  }
+
+  .navbar_link:after {
+    content: '';
+    width: 0px;
+    display: block;
+    height: 1px;
+    @apply bg-white;
+    transition: width 0.3s;
+  }
+
+  .navbar_link:hover:after {
+    width: 100%;
+  }
+
+  .drop_down_menu {
+    height: 0;
+  }
+
+  .drop_down_menu--show {
+    @apply py-[16px] px-[30px];
+    animation: grownDownMenu 300ms ease-in-out forwards;
+    transform-origin: top center;
+  }
+
+  .drop_down_menu--hide {
+    animation-name: growUpMenu;
+    animation-duration: 300ms;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    transform-origin: top center;
+    @apply px-[30px];
+  }
+}
+
+@keyframes grownDownMenu {
+  0% {
+    transform: scaleY(0);
+  }
+  80% {
+    transform: scaleY(1.1);
+  }
+  100% {
+    transform: scaleY(1);
+    height: 130px;
+  }
+}
+
+@keyframes growUpMenu {
+  0% {
+    transform: scaleY(1);
+    height: 130px;
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(0);
+    height: 0;
+    opacity: 0;
   }
 }
