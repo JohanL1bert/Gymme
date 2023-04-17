@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
+import { ArrowBtn } from 'stories/arrowBtn/ArrowBtn';
+import { ArrowBtnSmall } from 'stories/arrowBtn/ArrowBtn.stories';
 
 export const FAQuestions = ({
   heading,
@@ -15,13 +17,17 @@ export const FAQuestions = ({
   // closed - 68px open - 214px
   // h-[calc(theme(spacing.56)-10px)]
 
+  const handleClick = () => setIsOpen(!isOpen);
+
   return (
-    <li className="w-[calc(theme(spacing.96)+theme(spacing.96))]  bg-primary-100">
+    <li className="w-[calc(theme(spacing.96)+theme(spacing.96))]  bg-white rounded-sm border-[1px] border-solid border-faqBorder">
       <div className="flex justify-between p-[30px]">
         <h6>{heading}</h6>
-        <button type="button" onClick={() => setIsOpen(!isOpen)}>
-          2
-        </button>
+        <ArrowBtn
+          {...ArrowBtnSmall.args}
+          handleClick={handleClick}
+          isOpen={isOpen}
+        />
       </div>
       <div
         className={classNames('drop_down_menu', {
