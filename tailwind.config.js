@@ -11,7 +11,6 @@ const enumColors = Object.freeze({
 
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
-
   theme: {
     colors: {
       'primary-100': enumColors.primary100,
@@ -41,6 +40,8 @@ module.exports = {
         aboutImg: 'url(assets/icons/Team_Icon.svg)',
         trainingImg: 'url(assets/icons/Calendar_Icon.svg)',
         priceImg: 'url(assets/icons/PriceTag_Icon.svg)',
+        iconFaqMark: 'url(assets/icons/Vector.svg)',
+        iconFaqDot: 'url(assets/icons/Vector1.svg)',
       },
     },
   },
