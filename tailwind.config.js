@@ -28,6 +28,7 @@ module.exports = {
       violet: '#9b34eb',
       pink: '#eb349b',
       yellow: '#ebdb34',
+      faqBorder: 'rgba(19, 19, 22, 0.1)',
     },
     extend: {
       spacing: {
