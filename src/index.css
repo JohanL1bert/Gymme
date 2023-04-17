@@ -155,7 +155,7 @@
   }
   100% {
     transform: scaleY(1);
-    height: 130px;
+    height: 100%;
   }
 }
 
