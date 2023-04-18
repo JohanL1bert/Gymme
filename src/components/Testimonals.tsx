@@ -5,7 +5,7 @@ import React, {
   useMemo,
   useEffect,
 } from 'react';
-import { ArrowBtn } from './icons/ArrowBtn';
+import { ArrowBtn } from 'stories/arrowBtn/ArrowBtn';
 import { TestimonalsCard } from './testimonals/TestimonalsCard';
 import {
   testimonalData,
@@ -13,6 +13,10 @@ import {
 } from './testimonals/testimonalCard.data';
 import { createSliderData } from 'helpers/createSliderData';
 import { calculateTestimonalWidthSlider } from 'helpers/calculateWidthOfTestimonal';
+import {
+  ArrowBtnBingDirectionLeft,
+  ArrowBtnBingDirectionRight,
+} from 'stories/arrowBtn/ArrowBtn.stories';
 
 const MAX_NUMBER_TO_SLIDER_LEN = 4;
 
@@ -101,9 +105,15 @@ export const Testimonals = () => {
     <section className="p-20">
       <div className="flex justify-between mb-44">
         <div>
-          <ArrowBtn onClick={moveLeftSlider} />
+          <ArrowBtn
+            handleClick={moveLeftSlider}
+            {...ArrowBtnBingDirectionLeft.args}
+          />
           <br />
-          <ArrowBtn onClick={moveRightSlisder} />
+          <ArrowBtn
+            handleClick={moveRightSlisder}
+            {...ArrowBtnBingDirectionRight.args}
+          />
         </div>
         <div className="relative overflow-hidden">
           <ul
