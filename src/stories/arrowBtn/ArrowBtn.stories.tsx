@@ -23,6 +23,18 @@ ArrowBtnBig.args = {
   direction: 'up',
 };
 
+export const ArrowBtnBingDirectionLeft = Template.bind({});
+ArrowBtnBingDirectionLeft.args = {
+  size: 'big',
+  direction: 'left',
+};
+
+export const ArrowBtnBingDirectionRight = Template.bind({});
+ArrowBtnBingDirectionRight.args = {
+  size: 'big',
+  direction: 'right',
+};
+
 export const ArrowBtnSmall = Template.bind({});
 ArrowBtnSmall.args = {
   size: 'small',
