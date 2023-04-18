@@ -28,3 +28,9 @@ ArrowBtnSmall.args = {
   size: 'small',
   direction: 'up',
 };
+
+export const ArrowBtnSmallDirectionDown = Template.bind({});
+ArrowBtnSmall.args = {
+  size: 'small',
+  direction: 'down',
+};
