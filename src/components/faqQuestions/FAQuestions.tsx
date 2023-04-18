@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import { ArrowBtn } from 'stories/arrowBtn/ArrowBtn';
-import { ArrowBtnSmall } from 'stories/arrowBtn/ArrowBtn.stories';
+import {
+  ArrowBtnSmall,
+  ArrowBtnSmallDirectionDown,
+} from 'stories/arrowBtn/ArrowBtn.stories';
 
 export const FAQuestions = ({
   heading,
@@ -24,9 +27,8 @@ export const FAQuestions = ({
       <div className="flex justify-between p-[30px]">
         <h6>{heading}</h6>
         <ArrowBtn
-          {...ArrowBtnSmall.args}
+          {...(!isOpen ? ArrowBtnSmall.args : ArrowBtnSmallDirectionDown.args)}
           handleClick={handleClick}
-          isOpen={isOpen}
         />
       </div>
       <div
