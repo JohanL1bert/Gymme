@@ -104,16 +104,26 @@ export const Testimonals = () => {
   return (
     <section className="p-20">
       <div className="flex justify-between mb-44">
-        <div>
-          <ArrowBtn
-            handleClick={moveLeftSlider}
-            {...ArrowBtnBingDirectionLeft.args}
-          />
-          <br />
-          <ArrowBtn
-            handleClick={moveRightSlisder}
-            {...ArrowBtnBingDirectionRight.args}
-          />
+        <div className="flex flex-col justify-between">
+          <div className="relative h-[calc(theme(spacing.36)+6px)]">
+            <div className="absolute h-[calc(theme(spacing.28)+8px)] w-[calc(theme(spacing.32)+6px)] left-0 bg-iconCommunity bg-cover bg-no-repeat" />
+            <h2 className="H2 absolute left-[calc(theme(spacing.20)-2px)] top-9">
+              Commuinity
+              <span className="text-primary-200">.</span>
+              <span />
+            </h2>
+          </div>
+          <div className="flex gap-[32px] ml-11">
+            <ArrowBtn
+              handleClick={moveLeftSlider}
+              {...ArrowBtnBingDirectionLeft.args}
+            />
+            <br />
+            <ArrowBtn
+              handleClick={moveRightSlisder}
+              {...ArrowBtnBingDirectionRight.args}
+            />
+          </div>
         </div>
         <div className="relative overflow-hidden">
           <ul
