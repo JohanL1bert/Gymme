@@ -43,6 +43,10 @@ module.exports = {
         priceImg: 'url(assets/icons/PriceTag_Icon.svg)',
         iconFaqMark: 'url(assets/icons/Vector.svg)',
         iconFaqDot: 'url(assets/icons/Vector1.svg)',
+        iconCommunity: 'url(assets/icons/Speech_Icon.svg)',
+      },
+      fontFamily: {
+        body: ['Open Sans', 'sans-serif'],
       },
     },
   },
