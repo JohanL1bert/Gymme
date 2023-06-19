@@ -1,4 +1,6 @@
 import React from 'react';
+import { SignUp } from '../stories/button/SignUp';
+import { SignUpPrimary } from '../stories/button/SignUp.stories';
 
 export const About = () => {
   return (
@@ -25,8 +27,7 @@ export const About = () => {
               every person that steps foot into our gyms to better themselves.
             </div>
             <div className="mt-8">
-              <a href="">Join Now</a>
-              <button />
+              <SignUp {...SignUpPrimary.args} />
             </div>
           </div>
         </div>
