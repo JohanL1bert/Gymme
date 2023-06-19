@@ -17,6 +17,7 @@ export const FAQ = () => {
             </h2>
             <div className="flex flex-col items-center">
               <ul className="gap-y-[16px] flex flex-col">
+                <div>DELETE</div>
                 {faQuestionsData.map((item) => (
                   <FAQuestions key={item.id} {...item} />
                 ))}
