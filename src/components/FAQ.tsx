@@ -15,7 +15,6 @@ export const FAQ = () => {
               <span className="text-primary-200">.</span>
               <span />
             </h2>
-            <div>DELETE</div>
             <div className="flex flex-col items-center">
               <ul className="gap-y-[16px] flex flex-col">
                 {faQuestionsData.map((item) => (
