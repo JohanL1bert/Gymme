@@ -1,11 +1,11 @@
 import React from 'react';
 import CTAImg from '../assets/image/CTA.png';
-import { SignUp } from '../components/button/SignUp';
-import { signUpTypography } from './button/signUp.typography';
-
-const btnStyle = { ...signUpTypography.medium.cat, textInside: 'Join Now' };
+import { SignUp } from '../stories/button/SignUp';
+import { SignUpOutlined } from 'stories/button/SignUp.stories';
 
 export const CTA = () => {
+  const btnJoin = { ...SignUpOutlined.args, text: 'Join Now' };
+
   return (
     <section>
       <div className="h-[calc(theme(spacing.96)+theme(spacing.40)-7px)] bg-neutral-500 flex justify-center items-center">
@@ -16,7 +16,7 @@ export const CTA = () => {
             className="h-[618px] w-[500px]  -translate-y-10"
           />
         </div>
-        <div className="h-[290px] w-[492px] flex flex-col flex-start -translate-x-12">
+        <div className="h-[290px] w-[492px] flex flex-col -translate-x-12 items-start">
           <div>
             <h3 className="H1 text-neutral-100 text-start">
               Wanna join
@@ -24,11 +24,11 @@ export const CTA = () => {
               have fun?
             </h3>
           </div>
-          <div className="body_medium text-neutral-100 text-start mt-6">
+          <div className="body_medium text-neutral-100 text-start mt-6 mb-8">
             We’ll keep you updated on the things you need to know about Gymme.
             Nothing more, nothing less.
           </div>
-          <SignUp btnStyle={btnStyle} />
+          <SignUp {...btnJoin} />
         </div>
       </div>
     </section>
