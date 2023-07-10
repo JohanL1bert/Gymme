@@ -17,13 +17,10 @@ export const FAQuestions = ({
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  // closed - 68px open - 214px
-  // h-[calc(theme(spacing.56)-10px)]
-
   const handleClick = () => setIsOpen(!isOpen);
 
   return (
-    <li className="w-[calc(theme(spacing.96)+theme(spacing.96))]  bg-white rounded-sm border-[1px] border-solid border-faqBorder">
+    <li className="max-w-[calc(theme(spacing.96)+theme(spacing.96))] w-full  bg-white rounded-sm border-[1px] border-solid border-faqBorder">
       <div className="flex justify-between p-[30px]">
         <h6>{heading}</h6>
         <ArrowBtn
