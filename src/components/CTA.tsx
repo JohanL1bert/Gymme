@@ -8,15 +8,15 @@ export const CTA = () => {
 
   return (
     <section>
-      <div className="h-[calc(theme(spacing.96)+theme(spacing.40)-7px)] bg-neutral-500 flex justify-center items-center">
-        <div className="">
+      <div className="max-h-[calc(theme(spacing.96)+theme(spacing.40)-7px)] h-full bg-neutral-500 flex justify-center items-center">
+        <div className="h-full ">
           <img
             src={CTAImg}
             alt="image of CTA"
-            className="h-[618px] w-[500px]  -translate-y-10"
+            className="max-h-[618px] h-full -translate-y-10 max-w-[500px]"
           />
         </div>
-        <div className="h-[290px] w-[492px] flex flex-col -translate-x-12 items-start">
+        <div className="max-h-[290px] h-full max-w-[492px] w-full flex flex-col -translate-x-12 items-start">
           <div>
             <h3 className="H1 text-neutral-100 text-start">
               Wanna join
