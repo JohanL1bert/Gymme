@@ -2,7 +2,7 @@ const enumColors = Object.freeze({
   primary100: '#A5FFCE',
   primary200: '#4AE290',
   primary300: '#25C870',
-  neutral100: '#CFCFDE',
+  neutral100: '#FFFFFF',
   neutral200: '#DEDEE3',
   neutral300: '#9797A1',
   neutral400: '#595962',
@@ -29,6 +29,13 @@ module.exports = {
       pink: '#eb349b',
       yellow: '#ebdb34',
       faqBorder: 'rgba(19, 19, 22, 0.1)',
+    },
+    fontSize: {
+      esm: '12px',
+      sm: '18px',
+      base: '24px',
+      lg: '30px',
+      xl: '32px',
     },
     extend: {
       spacing: {
