@@ -5,12 +5,14 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    font-size: 16px;
+  }
+
   body {
     @apply font-body;
   }
-}
 
-@layer components {
   .H1 {
     font-family: 'Inter';
     font-weight: 800;
@@ -63,6 +65,12 @@
     line-height: 28px;
     text-align: center;
     color: theme('colors.neutral-500');
+  }
+}
+
+@layer components {
+  .App {
+    max-height: 100vh;
   }
 
   .body_large {
@@ -151,21 +159,22 @@
     transform-origin: top center;
     @apply px-[30px];
   }
-
+  /* mt-[108px] mb-[77px] */
   .faq_mark {
     @apply bg-iconFaqMark;
+    /*     width: 100%; */
+    /* max-width: 768px; */
+    /*     max-height: 825.7px; */
+    /*     height: 100%; */
     background-repeat: no-repeat;
     background-size: contain;
-    width: 768px;
-    height: 825.7px;
+    background-position: center;
   }
 
+  /* FIXME: fix resize dot */
+  /*   max-w-[calc(theme(spacing.64)-theme(spacing.1))]] mx-auto */
   .faq_dot {
-    @apply bg-iconFaqDot;
-    height: 250px;
-    width: 242px;
-    background-size: contain;
-    background-repeat: no-repeat;
+    @apply bg-iconFaqDot max-w-[calc(theme(spacing.64)-theme(spacing.1))] w-full h-full mx-auto;
   }
 
   .arrow_btn {
