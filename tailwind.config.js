@@ -32,6 +32,7 @@ module.exports = {
     },
     fontSize: {
       esm: '12px',
+      esmo: '14px',
       sm: '18px',
       base: '24px',
       lg: '30px',
@@ -54,6 +55,11 @@ module.exports = {
       },
       fontFamily: {
         body: ['Open Sans', 'sans-serif'],
+      },
+      screens: {
+        desktop: '1440px',
+        iPad: '834px',
+        mobile: '438px',
       },
     },
   },
