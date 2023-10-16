@@ -1,8 +1,12 @@
 import React from 'react';
 import { SignUp } from '../stories/button/SignUp';
-import { SignUpPrimary } from '../stories/button/SignUp.stories';
+import { SignUpOutlinedWithoutPadding } from 'stories/button/SignUp.stories';
+import { ArrowBtn } from 'stories/arrowBtn/ArrowBtn';
+import { ArrowBtnSmallDirectionRight } from 'stories/arrowBtn/ArrowBtn.stories';
 
 export const About = () => {
+  const JoinNowBtn = { ...SignUpOutlinedWithoutPadding.args, text: 'Join Now' };
+
   return (
     <section>
       <div className="flex justify-center items-center">
@@ -26,8 +30,13 @@ export const About = () => {
               The strength of our heart-felt identity is utilized to inspire
               every person that steps foot into our gyms to better themselves.
             </div>
-            <div className="mt-8">
-              <SignUp {...SignUpPrimary.args} />
+            <div className="flex mt-8 gap-x-4">
+              <div>
+                <SignUp {...JoinNowBtn} />
+              </div>
+              <div className="flex flex-col justify-center">
+                <ArrowBtn {...ArrowBtnSmallDirectionRight.args} />
+              </div>
             </div>
           </div>
         </div>
