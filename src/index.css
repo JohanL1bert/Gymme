@@ -70,7 +70,7 @@
 
 @layer components {
   .App {
-    max-height: 100vh;
+    min-height: calc(100vh - 195px);
   }
 
   .body_large {
@@ -159,13 +159,13 @@
     transform-origin: top center;
     @apply px-[30px];
   }
-  /* mt-[108px] mb-[77px] */
+
   .faq_mark {
     @apply bg-iconFaqMark;
-    /*     width: 100%; */
-    /* max-width: 768px; */
-    /*     max-height: 825.7px; */
-    /*     height: 100%; */
+    width: 100%;
+    max-width: 768px;
+    max-height: 825.7px;
+    height: 100%;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -174,7 +174,9 @@
   /* FIXME: fix resize dot */
   /*   max-w-[calc(theme(spacing.64)-theme(spacing.1))]] mx-auto */
   .faq_dot {
-    @apply bg-iconFaqDot max-w-[calc(theme(spacing.64)-theme(spacing.1))] w-full h-full mx-auto;
+    @apply bg-iconFaqDot max-w-[calc(theme(spacing.64)-theme(spacing.1))] h-full w-full;
+    background-size: contain;
+    background-repeat: no-repeat;
   }
 
   .arrow_btn {
