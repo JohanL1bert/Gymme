@@ -3,6 +3,10 @@ import { chooseCardStyle } from '../../helpers/chooseCardStyle';
 import { ICardDetails, TCardKeys } from '../pricing/pricingCard.data';
 import { TPricingCardTypography } from './pricingCard.typography';
 import classNames from 'classnames';
+import { ArrowBtn } from 'stories/arrowBtn/ArrowBtn';
+import { ArrowBtnSmall } from 'stories/arrowBtn/ArrowBtn.stories';
+import { SignUpOutlinedWithoutPadding } from 'stories/button/SignUp.stories';
+import { SignUp } from 'stories/button/SignUp';
 
 export interface ICardChooseDetails extends TPricingCardTypography {}
 export type TCardIndexSignature = TCardKeys;
@@ -17,34 +21,78 @@ export const PricingCard = ({
   const cardStyle = chooseCardStyle(cardDetails.styleCard, cardStylish);
 
   const upperBtnStyle = Object.values({ ...cardStyle.upperBtnStyle });
-  const { priceColor, usdColor, monthColor } = cardStyle.priceSection;
+  const { priceStyle, usdStyle, monthStyle } = cardStyle.priceSection;
+
+  const joinStyles = {
+    ...SignUpOutlinedWithoutPadding.args,
+    padding: 'large' as const,
+    border: 'rounded' as const,
+    text: 'Join Now',
+  };
+
+  const blackCardStyle =
+    cardDetails.id === 2
+      ? {
+          bgcolor: 'bg-neutral-200',
+          colorArr: 'before:bg-neutral-500 after:bg-neutral-500',
+        }
+      : undefined;
 
   return (
-    <div className={`${cardStyle.sizeH} ${cardStyle.sizeW} ${cardStyle.color}`}>
-      <div className="flex flex-col items-center px-24">
-        <div className={classNames(upperBtnStyle, 'rounded text-center')}>
-          {cardDetails.heading}
+    <div
+      className={classNames(
+        `${cardStyle.sizeH} ${cardStyle.sizeW} ${cardStyle.color} ${cardStyle.marginX} iPad:h-full`
+      )}
+    >
+      <div
+        className={classNames(
+          `flex iPad:flex-col iPad:gap-8 items-center iPad:px-24 iPad:py-20  
+          mobile:flex-row mobile:gap-20 mobile:h-full mobile:justify-center mobile:py-[42px]
+          ${cardDetails.id === 3 ? 'iPad:py-[42px]' : null}`
+        )}
+      >
+        <div className=" flex gap-8 iPad:items-center flex-col">
+          <div
+            className={classNames(
+              upperBtnStyle,
+              'flex items-start gap-[10px] px-[14px] py-[4px]'
+            )}
+          >
+            {cardDetails.heading}
+          </div>
+          <div>
+            <div className="flex flex-col items-center">
+              <div className={priceStyle}>
+                {cardDetails.price}
+                <span className={usdStyle}>$</span>
+              </div>
+            </div>
+            <div className={monthStyle}>/month</div>
+          </div>
         </div>
         <div>
-          <div className="flex flex-col items-center">
-            <div className={priceColor}>
-              {cardDetails.price}
-              <span className={usdColor}>$</span>
-            </div>
+          <div className="iPad:flex iPad:flex-col iPad:items-center iPad:gap-8  mobile:flex mobile: flex-col mobile:items-start mobile:gap-8">
+            <ul className="flex flex-col gap-y-4">
+              {cardDetails.services.map(({ features }, index) => (
+                <li key={index} className="gap-y-4 gap-x-2 flex items-center">
+                  <ArrowBtn
+                    {...ArrowBtnSmall.args}
+                    overrideStyle={blackCardStyle}
+                  />
+                  <span
+                    className={classNames(
+                      cardStyle.textColor,
+                      'not-italic font-normal leading-[26px] text-esmo'
+                    )}
+                  >
+                    {features}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <SignUp {...joinStyles} />
           </div>
-          <div className={monthColor}>/month</div>
         </div>
-        <ul className="flex flex-col gap-y-4">
-          {cardDetails.services.map((item, index) => (
-            <li key={index}>
-              <span className="w-[20px] h-[20px] rounded-full">
-                <span className="" />
-              </span>
-              <span className={cardStyle.textColor}>{item.features}</span>
-            </li>
-          ))}
-        </ul>
-        <button className="">join now</button>
       </div>
     </div>
   );

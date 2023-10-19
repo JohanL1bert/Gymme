@@ -7,6 +7,8 @@ interface IArrowBtn {
   direction?: 'up' | 'down' | 'left' | 'right';
   children?: React.ReactNode;
   handleClick?: () => void;
+  overrideStyle?: { bgcolor: string; colorArr: string };
+  props?: any;
 }
 
 const { arrowBtnDirection, arrowBtnSize } = arrowBtnData;
@@ -15,6 +17,8 @@ export const ArrowBtn: React.FC<IArrowBtn> = ({
   size = 'small',
   direction = 'up',
   handleClick,
+  overrideStyle,
+  ...props
 }) => {
   return (
     <div
@@ -22,11 +26,12 @@ export const ArrowBtn: React.FC<IArrowBtn> = ({
       className={classnames(
         arrowBtnSize[size],
         arrowBtnDirection[direction],
-
-        'bg-neutral-500 rounded-full relative cursor-pointer'
+        'bg-neutral-500 rounded-full relative cursor-pointer',
+        overrideStyle?.bgcolor,
+        ...Object.values(props)
       )}
     >
-      <span className="arrow_btn" />
+      <span className={classnames('arrow_btn', overrideStyle?.colorArr)} />
     </div>
   );
 };
