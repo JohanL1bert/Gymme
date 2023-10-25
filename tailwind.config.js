@@ -60,6 +60,7 @@ module.exports = {
         desktop: '1440px',
         iPad: '834px',
         mobile: '438px',
+        mobileSmall: '320px',
       },
     },
   },
