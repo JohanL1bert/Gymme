@@ -10,10 +10,23 @@ export const About = () => {
   return (
     <section>
       <div className="flex justify-center items-center">
-        <div className="w-[calc(theme(spacing.96)+theme(spacing.96))] h-[calc(theme(spacing.96)+44px)]">
-          <div className="relative h-[calc(theme(spacing.36)+6px)]">
-            <div className="absolute h-[calc(theme(spacing.28)+8px)] w-[calc(theme(spacing.36)+6px)] left-0 bg-aboutImg bg-cover bg-no-repeat" />
-            <h2 className="H2 absolute left-[calc(theme(spacing.16)+6px)] top-9">
+        <div
+          className="w-[calc(theme(spacing.96)+theme(spacing.96))] h-[calc(theme(spacing.96)+44px)] iPad:mx-0
+        mobileSmall:mx-5"
+        >
+          <div
+            className="relative mobile:h-[calc(theme(spacing.36)+6px)]
+          mobileSmall:h-24"
+          >
+            <div
+              className="absolute mobile:h-[calc(theme(spacing.28)+8px)] mobile:w-[calc(theme(spacing.36)+6px)]
+            left-0 bg-aboutImg bg-cover bg-no-repeat
+            mobileSmall:w-[calc(theme(spacing.24)+4px)] mobileSmall:h-20"
+            />
+            <h2
+              className="mobile:H2 absolute mobile:left-[calc(theme(spacing.16)+6px)] mobile:top-9
+            mobileSmall:left-[calc(theme(spacing.14)-6px)] mobileSmall:top-5 mobileSmall:H2 mobileSmall:text-[32px] leading-[40px]"
+            >
               Our mission
               <span className="text-primary-200">.</span>
               <span />
