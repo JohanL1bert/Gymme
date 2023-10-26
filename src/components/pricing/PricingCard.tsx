@@ -47,7 +47,8 @@ export const PricingCard = ({
       <div
         className={classNames(
           `flex iPad:flex-col iPad:gap-8 items-center iPad:px-24 iPad:py-20  
-          mobile:flex-row mobile:gap-20 mobile:h-full mobile:justify-center mobile:py-[42px]
+          mobile:flex-row mobile:gap-8 mobile:h-full mobile:justify-center mobile:py-[42px]
+          mobileSmall:justify-center mobileSmall:gap-8 mobileSmall:py-10
           ${cardDetails.id === 3 ? 'iPad:py-[42px]' : null}`
         )}
       >
@@ -71,8 +72,12 @@ export const PricingCard = ({
           </div>
         </div>
         <div>
-          <div className="iPad:flex iPad:flex-col iPad:items-center iPad:gap-8  mobile:flex mobile: flex-col mobile:items-start mobile:gap-8">
-            <ul className="flex flex-col gap-y-4">
+          <div
+            className="iPad:flex iPad:flex-col iPad:items-center iPad:gap-8
+          mobile:flex mobile:flex-col mobile:items-start mobile:gap-8
+          mobileSmall:flex mobileSmall:flex-col mobileSmall:items-start mobileSmall:gap-8"
+          >
+            <ul className="flex flex-col mobile:gap-y-4 mobileSmall:gap-3">
               {cardDetails.services.map(({ features }, index) => (
                 <li key={index} className="gap-y-4 gap-x-2 flex items-center">
                   <ArrowBtn
