@@ -9,10 +9,20 @@ export const Pricing = () => {
       <div className="flex justify-center items-center h-full">
         {/*  h-[calc(theme(spacing.96)+theme(spacing.80)+51px)] */}
         <div className="w-[calc(theme(spacing.96)+theme(spacing.96)+theme(spacing.96)+theme(spacing.32))] h-full">
-          <div className="flex flex-col items-center">
-            <div className="relative h-[calc(theme(spacing.28)+8px)] w-[calc(theme(spacing.96)-5px)] mb-20">
-              <div className="absolute h-[calc(theme(spacing.28)+8px)] w-[calc(theme(spacing.28)+9.5px)] left-0 bg-priceImg bg-cover bg-no-repeat" />
-              <h2 className="H2 absolute left-[calc(theme(spacing.16)+6px)] top-9">
+          <div className="flex flex-col mobile:items-center mobileSmall:items-start">
+            <div
+              className="relative mobile:h-[calc(theme(spacing.28)+8px)] mobile:w-[calc(theme(spacing.96)-5px)] mobile:mb-20 mobile:ml-0
+            mobileSmall:mb-[calc(theme(spacing.16)+6px)] mobileSmall:ml-5 mobileSmall:h-20 mobileSmall:w-[calc(theme(spacing.64)-6px)]"
+            >
+              <div
+                className="absolute mobile:h-[calc(theme(spacing.28)+8px)] mobile:w-[calc(theme(spacing.28)+9.5px)] left-0 bg-priceImg bg-cover bg-no-repeat
+              mobileSmall:w-20 mobileSmall:h-20"
+              />
+              <h2
+                className="mobile:H2 absolute mobile:left-[calc(theme(spacing.16)+6px)] mobile:top-9
+                mobileSmall:H2 mobileSmall:left-[calc(theme(spacing.12)-6px)] mobileSmall:text-[32px] mobileSmall:leading-10
+                mobileSmall:top-5"
+              >
                 Pricing plan
                 <span className="text-primary-200">.</span>
                 <span />
