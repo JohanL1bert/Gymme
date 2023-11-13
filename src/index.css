@@ -71,6 +71,7 @@
 @layer components {
   .App {
     min-height: calc(100vh - 195px);
+    height: 100%;
   }
 
   .body_large {
@@ -110,6 +111,8 @@
 
   .hover_navbar {
     color: theme('colors.white');
+    transition: all 0.5s ease 0.2s;
+    width: max-content;
   }
 
   .arrow {
@@ -160,18 +163,32 @@
     @apply px-[30px];
   }
 
+  .faq {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: -10;
+    gap: 40px;
+    margin-bottom: 100px;
+  }
+
   .faq_mark {
     @apply bg-iconFaqMark;
     width: 100%;
     max-width: 768px;
-    max-height: 825.7px;
+    min-height: 825.7px;
     height: 100%;
+    height: 825px;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+    @apply -translate-x-2;
   }
 
-  /* FIXME: fix resize dot */
   /*   max-w-[calc(theme(spacing.64)-theme(spacing.1))]] mx-auto */
   .faq_dot {
     @apply bg-iconFaqDot max-w-[calc(theme(spacing.64)-theme(spacing.1))] h-full w-full;
@@ -208,6 +225,85 @@
     transform: rotate(-50deg);
     left: 45%;
   }
+
+  .hero_container_text {
+    position: absolute;
+    left: 50%;
+    transform: translate(-80%, 0);
+  }
+
+  .hero_container_image {
+    position: absolute;
+    left: 65%;
+    transform: translate(-50%, 0);
+  }
+
+  .hamburger {
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    right: 5%;
+    top: 50%;
+    transform: translate(-5%, -50%);
+    z-index: 10;
+    transition: all 0.7s ease;
+  }
+
+  .navbar_line {
+    @apply w-[30px] h-[3px] mt-[5px] bg-white transition-all ease-in-out duration-300;
+  }
+
+  .line_1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .line_2 {
+    transition: all 0.7s ease;
+    width: 0;
+  }
+  .line_3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+
+  .container_links_reset {
+    position: static;
+    height: auto;
+    background-color: inherit;
+    width: auto;
+    margin-top: 0;
+    transform: translateY(0);
+    transition: none;
+  }
+
+  .container_links {
+    position: fixed;
+    height: 100vh;
+    background-color: rebeccapurple;
+    width: 100vw;
+    left: 0;
+    transform: translateY(50%);
+    margin-top: 80px;
+    transition: all 1s ease-out;
+    pointer-events: all;
+    /*  padding: 0 0.7vw;
+    justify-content: space-evenly;
+    align-items: center;
+    text-transform: uppercase;
+    display: flex;
+    position: fixed;
+    background: #131418;
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    clip-path: circle(50px at 90% -20%);
+    transition: all 1s ease-out;
+    pointer-events: none;
+    clip-path: circle(1000px at 90% -10%);
+    pointer-events: all; */
+  }
+
+  .fade_links {
+  }
 }
 
 @keyframes grownDownMenu {
@@ -235,3 +331,5 @@
     opacity: 0;
   }
 }
+
+/* todo: font change only for mobileSmall */
