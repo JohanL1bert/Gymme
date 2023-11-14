@@ -111,8 +111,8 @@
 
   .hover_navbar {
     color: theme('colors.white');
-    transition: all 0.5s ease 0.2s;
     width: max-content;
+    @apply mobileSmall:opacity-0 iPad:opacity-100 [&]:mobileSmall:transition-none;
   }
 
   .arrow {
@@ -278,31 +278,57 @@
   .container_links {
     position: fixed;
     height: 100vh;
-    background-color: rebeccapurple;
     width: 100vw;
     left: 0;
     transform: translateY(50%);
     margin-top: 80px;
     transition: all 1s ease-out;
     pointer-events: all;
-    /*  padding: 0 0.7vw;
-    justify-content: space-evenly;
-    align-items: center;
-    text-transform: uppercase;
-    display: flex;
-    position: fixed;
-    background: #131418;
-    height: 100vh;
-    width: 100%;
-    flex-direction: column;
     clip-path: circle(50px at 90% -20%);
-    transition: all 1s ease-out;
-    pointer-events: none;
-    clip-path: circle(1000px at 90% -10%);
-    pointer-events: all; */
+    @apply bg-neutral-500;
   }
 
-  .fade_links {
+  .open {
+    clip-path: circle(1000px at 100%);
+    pointer-events: all;
+  }
+
+  .fade_links > li:nth-child(1) {
+    transition: all 0.5s ease 0.2s;
+    @apply iPad:transition-none;
+  }
+
+  .fade_links > li:nth-child(2) {
+    transition: all 0.5s ease 0.4s;
+    @apply iPad:transition-none;
+  }
+
+  .fade_links > li:nth-child(3) {
+    transition: all 0.5s ease 0.6s;
+    @apply iPad:transition-none;
+  }
+
+  .fade_links > li:nth-child(4) {
+    transition: all 0.5s ease 0.8s;
+    @apply iPad:transition-none;
+  }
+
+  .fade_links > li:nth-child(5) {
+    transition: all 0.5s ease 1s;
+    @apply iPad:transition-none;
+  }
+
+  .fade_links > li:nth-child(6) {
+    transition: all 0.5s ease 1.2s;
+    @apply iPad:transition-none;
+  }
+
+  .fade_btn {
+    transition: all 0.5s ease 1.4s;
+  }
+
+  .fade_open {
+    opacity: 1;
   }
 }
 
