@@ -1,34 +1,103 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SignUp } from '../stories/button/SignUp';
 import { Logo } from './logo/Logo';
 import { SignUpPrimary, LogInSmall } from 'stories/button/SignUp.stories';
 import { navBarText } from 'helpers/navBarInfo';
+import classnames from 'classnames';
 
 export const Navbar = () => {
+  const [toggleLine, setToggleLine] = useState<boolean>(false);
+
+  const lines = [
+    { key: 'line_1', ind: 1 },
+    { key: 'line_2', ind: 2 },
+    { key: 'line_3', ind: 3 },
+  ];
+
+  const toggleMobileMenu = () => {
+    setToggleLine(!toggleLine);
+  };
+
   return (
     <div className="bg-neutral-500 w-full h-[82px]">
-      <div className="px-[theme(spacing.20)] py-5 w-full h-full flex">
-        <nav className="flex justify-between w-full max-w-[1980px] items-center h-[calc(theme(spacing.10)+2px)]  shrink-0">
-          <Logo />
-
-          <div className="iPad:hidden">
-            <div className="w-[30px] h-[3px] mt-[5px] bg-white transition-all ease-in-out duration-300" />
-            <div className="w-[30px] h-[3px] mt-[5px] bg-white transition-all ease-in-out duration-300" />
-            <div className="w-[30px] h-[3px] mt-[5px] bg-white transition-all ease-in-out duration-300" />
+      <div
+        className={classnames(
+          'iPad:py-5 iPad:w-full iPad:h-full mobileSmall:py-5'
+        )}
+      >
+        <nav
+          className={classnames(
+            `iPad:flex iPad:justify-around iPad:w-full iPad:max-w-[1980px] iPad:items-center
+        iPad:h-[calc(theme(spacing.10)+2px)] iPad:px-0
+        mobile:flex mobile:items-center mobile:justify-between mobile:px-7
+        mobileSmall:z-10 mobileSmall:flex mobileSmall:items-center mobileSmall:justify-between
+        mobileSmall:h-[calc(theme(spacing.10)+2px)] mobileSmall:px-7
+        relative`
+          )}
+        >
+          <div className="iPad:grow mobileSmall:flex items-center justify-center">
+            <Logo />
           </div>
 
-          <ul className="flex w-[calc(theme(spacing.96)+theme(spacing.36))] justify-between h-5 items-center relative z-10">
-            {navBarText.map(({ nav, id }) => (
-              <li key={id} className="hover_navbar">
-                <a href="#" className="navbar_link">
-                  {nav}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <div className="relative z-10 flex items-start h-[48px] w-[188px] gap-[theme(spacing.4)]">
-            <SignUp {...LogInSmall.args} />
-            <SignUp {...SignUpPrimary.args} />
+          <div
+            className="iPad:hidden mobile:inline-block cursor-pointer hamburger "
+            onClick={toggleMobileMenu}
+          >
+            {lines.map(({ key, ind }) => {
+              return (
+                <div
+                  key={ind}
+                  className={classnames('navbar_line', {
+                    [`${key}`]: toggleLine,
+                  })}
+                />
+              );
+            })}
+          </div>
+          <div
+            className={classnames(
+              `iPad:flex iPad:items-center iPad:justify-around iPad:grow-[3] iPad:flex-row iPad:[clip-path:none]
+            mobileSmall:container_links iPad:container_links_reset 
+            mobileSmall:flex mobileSmall:items-center mobileSmall:flex-col mobileSmall:justify-around `,
+              {
+                'mobileSmall:open': toggleLine,
+              }
+            )}
+          >
+            <ul
+              className={classnames(
+                `iPad:flex iPad:w-[calc(theme(spacing.96)+theme(spacing.36))] iPad:justify-between
+              iPad:h-5 iPad:items-center iPad:relative iPad:flex-row iPad:gap-0 iPad:transition-none
+              mobileSmall:gap-8 mobileSmall:flex mobileSmall:flex-col mobileSmall:transition-none`,
+                { 'mobileSmall:fade_links': toggleLine }
+              )}
+            >
+              {navBarText.map(({ nav, id, anchorLink }) => (
+                <li
+                  key={id}
+                  className={classnames('hover_navbar', {
+                    fade_open: toggleLine,
+                  })}
+                >
+                  <a href={anchorLink} className="navbar_link">
+                    {nav}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <div
+              className={classnames(
+                `iPad:relative iPad:z-10 iPad:flex iPad:items-start iPad:h-[48px] iPad:w-[193px]
+              iPad:gap-[theme(spacing.4)] mobileSmall:transition-none iPad:opacity-100 mobileSmall:opacity-0 mobileSmall:flex mobileSmall:gap-8`,
+                {
+                  'mobileSmall:opacity-100 [&]:mobileSmall:fade_btn':
+                    toggleLine,
+                }
+              )}
+            >
+              <SignUp {...LogInSmall.args} />
+              <SignUp {...SignUpPrimary.args} />
+            </div>
           </div>
         </nav>
       </div>
