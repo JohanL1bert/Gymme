@@ -2,18 +2,16 @@
 import React from 'react';
 import classnames from 'classnames';
 import { signUpButtonData } from './signUp.data';
-import { getValueFromKeysObject } from 'helpers/getValueFromKeysObject';
 
 interface IBtnStyles {
-  size?: 'small' | 'medium' | 'large';
   text?: string;
   bgColor?: string | undefined;
   backgroundColor?: any;
-  padding?: 'medium' | 'large' | 'small';
+  padding?: 'medium' | 'large' | 'small' | 'none';
   textColor?: 'white' | 'black';
   border?: 'none' | 'rounded';
   fontStyle?: 'H1' | 'H2' | 'H3' | 'H4' | 'H5' | 'H6';
-  fontSize?: 'esm' | 'sm' | 'base' | 'lg' | 'xl';
+  fontSize?: 'esm' | 'esmo' | 'sm' | 'base' | 'lg' | 'xl';
   lHeightValue?: 'lHSmall';
   children?: React.ReactNode;
 }
@@ -21,9 +19,9 @@ const { btnPadding, btnBorder, textCol, btnCol, fStyle, fSize, lHeight } =
   signUpButtonData;
 
 export const SignUp: React.FC<IBtnStyles> = ({
-  size = 'medium',
   text = 'button',
   bgColor,
+  padding = 'none',
   border = 'none',
   textColor = 'black',
   fontStyle = 'H1',
@@ -35,21 +33,21 @@ export const SignUp: React.FC<IBtnStyles> = ({
     <button
       className={classnames(
         btnBorder[border],
-        textCol[textColor],
         btnCol[bgColor as keyof typeof btnCol],
         'h-full'
       )}
     >
       <div
         className={classnames(
-          btnPadding[size],
+          textCol[textColor],
+          btnPadding[padding],
           fStyle[fontStyle],
           fSize[fontSize],
           lHeight[lHeightValue],
-          'my-auto'
+          'my-auto uppercase'
         )}
       >
-        {text.toUpperCase()}
+        {text}
       </div>
     </button>
   );

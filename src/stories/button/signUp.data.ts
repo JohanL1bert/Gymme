@@ -1,4 +1,5 @@
 const btnPadding = {
+  none: 'py-[17px]',
   small: 'px-3 py-2',
   medium: 'px-[calc(theme(spacing.8)-theme(spacing[0.5]))] py-3',
   large: 'px-10 py-3.5',
@@ -35,6 +36,7 @@ const fStyle = {
 
 const fSize = {
   esm: 'text-esm',
+  esmo: 'text-esmo',
   sm: 'text-sm',
   base: 'text-base',
   lg: 'text-lg',
