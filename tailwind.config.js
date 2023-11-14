@@ -21,7 +21,7 @@ module.exports = {
       'neutral-300': enumColors.neutral300,
       'neutral-200': enumColors.neutral200,
       'neutral-100': enumColors.neutral100,
-      white: '#FFFFFF',
+      white: enumColors.neutral100,
       cardWhite: 'rgba(19, 19, 22, 0.05)',
       cardBlack: enumColors.neutral500,
       aqua: '#34ebeb',
