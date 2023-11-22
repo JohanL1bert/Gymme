@@ -70,7 +70,7 @@
 
 @layer components {
   .App {
-    min-height: calc(100vh - 195px);
+    min-height: calc(100svh - 195px);
     height: 100%;
   }
 
@@ -226,18 +226,6 @@
     left: 45%;
   }
 
-  .hero_container_text {
-    position: absolute;
-    left: 50%;
-    transform: translate(-80%, 0);
-  }
-
-  .hero_container_image {
-    position: absolute;
-    left: 65%;
-    transform: translate(-50%, 0);
-  }
-
   .hamburger {
     display: block;
     position: absolute;
@@ -245,7 +233,6 @@
     right: 5%;
     top: 50%;
     transform: translate(-5%, -50%);
-    z-index: 10;
     transition: all 0.7s ease;
   }
 
@@ -280,8 +267,9 @@
     height: 100vh;
     width: 100vw;
     left: 0;
-    transform: translateY(50%);
-    margin-top: 80px;
+    top: 0;
+    /*      transform: translateY(50%);
+    margin-top: 80px; */
     transition: all 1s ease-out;
     pointer-events: all;
     clip-path: circle(50px at 90% -20%);
