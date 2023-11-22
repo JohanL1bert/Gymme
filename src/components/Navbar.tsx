@@ -27,20 +27,20 @@ export const Navbar = () => {
       >
         <nav
           className={classnames(
-            `iPad:flex iPad:justify-around iPad:w-full iPad:max-w-[1980px] iPad:items-center
-        iPad:h-[calc(theme(spacing.10)+2px)] iPad:px-0
+            `iPad:flex iPad:justify-around iPad:w-full  iPad:items-center
+        iPad:h-[calc(theme(spacing.10)+2px)]
         mobile:flex mobile:items-center mobile:justify-between mobile:px-7
-        mobileSmall:z-10 mobileSmall:flex mobileSmall:items-center mobileSmall:justify-between
-        mobileSmall:h-[calc(theme(spacing.10)+2px)] mobileSmall:px-7
+        mobileSmall:flex mobileSmall:items-center mobileSmall:justify-between
+        mobileSmall:h-[calc(theme(spacing.10)+2px)] mobileSmall:px-7 
         relative`
           )}
         >
-          <div className="iPad:grow mobileSmall:flex items-center justify-center">
+          <div className=" mobileSmall:flex items-center justify-center mobileSmall:z-30">
             <Logo />
           </div>
 
           <div
-            className="iPad:hidden mobile:inline-block cursor-pointer hamburger "
+            className="iPad:hidden mobile:inline-block cursor-pointer hamburger mobileSmall:z-30 "
             onClick={toggleMobileMenu}
           >
             {lines.map(({ key, ind }) => {
@@ -56,9 +56,9 @@ export const Navbar = () => {
           </div>
           <div
             className={classnames(
-              `iPad:flex iPad:items-center iPad:justify-around iPad:grow-[3] iPad:flex-row iPad:[clip-path:none]
-            mobileSmall:container_links iPad:container_links_reset 
-            mobileSmall:flex mobileSmall:items-center mobileSmall:flex-col mobileSmall:justify-around `,
+              `iPad:flex iPad:items-center iPad:justify-evenly  iPad:flex-row iPad:[clip-path:none]
+            mobileSmall:container_links iPad:container_links_reset flex-1
+            mobileSmall:flex mobileSmall:items-center mobileSmall:flex-col mobileSmall:justify-around mobileSmall:z-20`,
               {
                 'mobileSmall:open': toggleLine,
               }
@@ -66,7 +66,7 @@ export const Navbar = () => {
           >
             <ul
               className={classnames(
-                `iPad:flex iPad:w-[calc(theme(spacing.96)+theme(spacing.36))] iPad:justify-between
+                `iPad:flex  iPad:w-full iPad:max-w-[calc(theme(spacing.96)+theme(spacing.36))] iPad:justify-between
               iPad:h-5 iPad:items-center iPad:relative iPad:flex-row iPad:gap-0 iPad:transition-none
               mobileSmall:gap-8 mobileSmall:flex mobileSmall:flex-col mobileSmall:transition-none`,
                 { 'mobileSmall:fade_links': toggleLine }
@@ -87,8 +87,9 @@ export const Navbar = () => {
             </ul>
             <div
               className={classnames(
-                `iPad:relative iPad:z-10 iPad:flex iPad:items-start iPad:h-[48px] iPad:w-[193px]
-              iPad:gap-[theme(spacing.4)] mobileSmall:transition-none iPad:opacity-100 mobileSmall:opacity-0 mobileSmall:flex mobileSmall:gap-8`,
+                `iPad:relative  iPad:flex iPad:items-start iPad:h-[48px] iPad:max-w-[192px] iPad:w-full
+              iPad:gap-[theme(spacing.4)] mobileSmall:transition-none iPad:opacity-100 mobileSmall:opacity-0 mobileSmall:flex mobileSmall:gap-8
+              mobileSmall:w-[227px] mobileSmall:justify-center`,
                 {
                   'mobileSmall:opacity-100 [&]:mobileSmall:fade_btn':
                     toggleLine,
