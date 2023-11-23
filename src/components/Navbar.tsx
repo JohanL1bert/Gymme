@@ -19,7 +19,7 @@ export const Navbar = () => {
   };
 
   return (
-    <div className="bg-neutral-500 w-full h-[82px]">
+    <div className="bg-neutral-500 w-full min-h-[calc(theme(spacing.20)+2px)] h-full">
       <div
         className={classnames(
           'iPad:py-5 iPad:w-full iPad:h-full mobileSmall:py-5'
@@ -87,9 +87,9 @@ export const Navbar = () => {
             </ul>
             <div
               className={classnames(
-                `iPad:relative  iPad:flex iPad:items-start iPad:h-[48px] iPad:max-w-[192px] iPad:w-full
+                `iPad:relative iPad:flex iPad:items-start iPad:h-12 iPad:max-w-[theme(spacing.48)] iPad:w-full
               iPad:gap-[theme(spacing.4)] mobileSmall:transition-none iPad:opacity-100 mobileSmall:opacity-0 mobileSmall:flex mobileSmall:gap-8
-              mobileSmall:w-[227px] mobileSmall:justify-center`,
+              mobileSmall:w-[calc(theme(spacing.56)+3px)] mobileSmall:justify-center`,
                 {
                   'mobileSmall:opacity-100 [&]:mobileSmall:fade_btn':
                     toggleLine,
