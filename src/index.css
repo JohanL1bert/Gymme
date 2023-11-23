@@ -13,6 +13,11 @@
     @apply font-body;
   }
 
+  svg {
+    max-width: 100%;
+    height: 100%;
+  }
+
   .H1 {
     font-family: 'Inter';
     font-weight: 800;
@@ -72,6 +77,11 @@
   .App {
     min-height: calc(100svh - 195px);
     height: 100%;
+  }
+
+  .margin_top_section {
+    @apply iPad:mt-[calc(theme(spacing.36)-3px)]
+    mobile:mt-[calc(theme(spacing.28)-2px)] mobileSmall:mt-20;
   }
 
   .body_large {
@@ -164,7 +174,7 @@
   }
 
   .faq {
-    display: flex;
+    /*     display: flex;
     flex-direction: column;
     align-items: center;
     position: absolute;
@@ -173,7 +183,13 @@
     transform: translate(-50%, 0);
     z-index: -10;
     gap: 40px;
-    margin-bottom: 100px;
+    margin-bottom: 100px; */
+    position: absolute;
+    z-index: -10;
+    left: 50%;
+    transform: translate(-50%, 0);
+    top: 0;
+    width: 100%;
   }
 
   .faq_mark {
