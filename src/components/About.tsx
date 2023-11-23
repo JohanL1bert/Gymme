@@ -11,7 +11,7 @@ export const About = () => {
     <section>
       <div className="flex justify-center items-center">
         <div
-          className="w-[calc(theme(spacing.96)+theme(spacing.96))] h-[calc(theme(spacing.96)+44px)] iPad:mx-0
+          className="w-[calc(theme(spacing.96)+theme(spacing.96))] min-h-[calc(theme(spacing.96)+44px)] iPad:mx-0 margin_top_section
         mobileSmall:mx-5"
         >
           <div

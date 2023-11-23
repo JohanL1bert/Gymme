@@ -6,8 +6,7 @@ import { pricingCardData } from './pricing/pricingCard.data';
 export const Pricing = () => {
   return (
     <section>
-      <div className="flex justify-center items-center h-full">
-        {/*  h-[calc(theme(spacing.96)+theme(spacing.80)+51px)] */}
+      <div className="flex justify-center items-center h-full margin_top_section">
         <div className="w-[calc(theme(spacing.96)+theme(spacing.96)+theme(spacing.96)+theme(spacing.32))] h-full">
           <div className="flex flex-col mobile:items-center mobileSmall:items-start">
             <div
