@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { SignUp } from '../stories/button/SignUp';
 import { Logo } from './logo/Logo';
 import { SignUpPrimary, LogInSmall } from 'stories/button/SignUp.stories';
 import { navBarText } from 'helpers/navBarInfo';
 import classnames from 'classnames';
+import { useHideNavBar } from 'helpers/useHideNavBar';
 
 export const Navbar = () => {
   const [toggleLine, setToggleLine] = useState<boolean>(false);
+  const navbarMobileHide = useRef<HTMLDivElement>(null);
+
+  useHideNavBar(navbarMobileHide, () => {
+    setToggleLine(false);
+  });
 
   const lines = [
     { key: 'line_1', ind: 1 },
@@ -42,6 +48,7 @@ export const Navbar = () => {
           <div
             className="iPad:hidden mobile:inline-block cursor-pointer hamburger mobileSmall:z-30 "
             onClick={toggleMobileMenu}
+            ref={navbarMobileHide}
           >
             {lines.map(({ key, ind }) => {
               return (
@@ -88,7 +95,8 @@ export const Navbar = () => {
             <div
               className={classnames(
                 `iPad:relative iPad:flex iPad:items-start iPad:h-12 iPad:max-w-[theme(spacing.48)] iPad:w-full
-              iPad:gap-[theme(spacing.4)] mobileSmall:transition-none iPad:opacity-100 mobileSmall:opacity-0 mobileSmall:flex mobileSmall:gap-8
+              iPad:gap-[theme(spacing.4)] mobileSmall:transition-none iPad:opacity-100 
+              mobileSmall:opacity-0 mobileSmall:flex mobileSmall:gap-8
               mobileSmall:w-[calc(theme(spacing.56)+3px)] mobileSmall:justify-center`,
                 {
                   'mobileSmall:opacity-100 [&]:mobileSmall:fade_btn':
