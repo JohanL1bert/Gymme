@@ -5,17 +5,19 @@ import classnames from 'classnames';
 interface IArrowBtn {
   size?: 'big' | 'small';
   direction?: 'up' | 'down' | 'left' | 'right';
+  hover?: boolean;
   children?: React.ReactNode;
   handleClick?: () => void;
   overrideStyle?: { bgcolor: string; colorArr: string };
   props?: any;
 }
 
-const { arrowBtnDirection, arrowBtnSize } = arrowBtnData;
+const { arrowBtnDirection, arrowBtnSize, arrowHover } = arrowBtnData;
 
 export const ArrowBtn: React.FC<IArrowBtn> = ({
   size = 'small',
   direction = 'up',
+  hover = false,
   handleClick,
   overrideStyle,
   ...props
@@ -31,7 +33,13 @@ export const ArrowBtn: React.FC<IArrowBtn> = ({
         ...Object.values(props)
       )}
     >
-      <span className={classnames('arrow_btn', overrideStyle?.colorArr)} />
+      <span
+        className={classnames(
+          'arrow_btn',
+          { [arrowHover.hoverBtn]: hover },
+          overrideStyle?.colorArr
+        )}
+      />
     </div>
   );
 };

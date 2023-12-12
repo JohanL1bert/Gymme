@@ -21,34 +21,40 @@ export const ArrowBtnBig = Template.bind({});
 ArrowBtnBig.args = {
   size: 'big',
   direction: 'up',
+  hover: true,
 };
 
 export const ArrowBtnBingDirectionLeft = Template.bind({});
 ArrowBtnBingDirectionLeft.args = {
   size: 'big',
   direction: 'left',
+  hover: true,
 };
 
 export const ArrowBtnBingDirectionRight = Template.bind({});
 ArrowBtnBingDirectionRight.args = {
   size: 'big',
   direction: 'right',
+  hover: true,
 };
 
 export const ArrowBtnSmall = Template.bind({});
 ArrowBtnSmall.args = {
   size: 'small',
   direction: 'up',
+  hover: false,
 };
 
 export const ArrowBtnSmallDirectionDown = Template.bind({});
 ArrowBtnSmall.args = {
   size: 'small',
   direction: 'down',
+  hover: false,
 };
 
 export const ArrowBtnSmallDirectionRight = Template.bind({});
 ArrowBtnSmallDirectionRight.args = {
   size: 'small',
   direction: 'right',
+  hover: false,
 };

@@ -1,6 +1,6 @@
 const arrowBtnSize = {
-  big: 'w-10 h-10',
-  small: 'w-5 h-5',
+  big: 'min-w-[theme(spacing.10)] h-10',
+  small: 'min-w-[theme(spacing.5)] h-5',
 };
 
 const arrowBtnDirection = {
@@ -10,7 +10,12 @@ const arrowBtnDirection = {
   right: 'rotate-[270deg]',
 };
 
+const arrowHover = {
+  hoverBtn: 'hover_arrow',
+};
+
 export const arrowBtnData = {
   arrowBtnSize,
   arrowBtnDirection,
+  arrowHover,
 };
