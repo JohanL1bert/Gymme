@@ -47,12 +47,12 @@ export const PricingCard = ({
       <div
         className={classNames(
           `flex iPad:flex-col iPad:gap-8 items-center iPad:px-24 iPad:py-20  
-          mobile:flex-row mobile:gap-8 mobile:h-full mobile:justify-center mobile:py-[42px]
-          mobileSmall:justify-center mobileSmall:gap-8 mobileSmall:py-10
-          ${cardDetails.id === 3 ? 'iPad:py-[42px]' : null}`
+          mobile:flex-row mobile:gap-8 mobile:h-full mobile:justify-center mobile:py-[42px] mobile:px-0
+          mobileSmall:justify-center mobileSmall:gap-8 mobileSmall:py-10 mobileSmall:px-5
+          ${cardDetails.id === 3 ? 'iPad:py-[42px]' : ''}`
         )}
       >
-        <div className=" flex gap-8 iPad:items-center flex-col">
+        <div className="flex gap-8 iPad:items-center flex-col">
           <div
             className={classNames(
               upperBtnStyle,
