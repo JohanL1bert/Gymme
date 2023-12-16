@@ -1,9 +1,14 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 import React, {
   useState,
   useRef,
   useLayoutEffect,
   useMemo,
   useEffect,
+  useCallback,
+  useReducer,
+  RefObject,
 } from 'react';
 import { ArrowBtn } from 'stories/arrowBtn/ArrowBtn';
 import { TestimonalsCard } from './testimonals/TestimonalsCard';
@@ -11,132 +16,266 @@ import {
   testimonalData,
   TTestimonalCard,
 } from './testimonals/testimonalCard.data';
-import { createSliderData } from 'helpers/createSliderData';
-import { calculateTestimonalWidthSlider } from 'helpers/calculateWidthOfTestimonal';
 import {
   ArrowBtnBingDirectionLeft,
   ArrowBtnBingDirectionRight,
 } from 'stories/arrowBtn/ArrowBtn.stories';
+import classNames from 'classnames';
 
-const MAX_NUMBER_TO_SLIDER_LEN = 4;
+const classToggle = {
+  activeClass: 'testimonal-transition-active',
+  disableClass: 'testimonal-transition-disable',
+} as const;
+
+Object.freeze(classToggle);
+
+const calculateWidth = (refOfElement: RefObject<HTMLUListElement>) => {
+  if (refOfElement.current) {
+    const widthOfFullContainerWithOverflow = refOfElement.current.scrollWidth;
+    const numberOfElements = refOfElement.current.childNodes.length;
+    const oneSection = widthOfFullContainerWithOverflow / numberOfElements;
+    return oneSection;
+  }
+  throw new Error(`${refOfElement} is undefined`);
+};
+
+type TKeyClassToggle = keyof typeof classToggle;
+type TLiteralClassToggle = typeof classToggle[TKeyClassToggle];
+
+interface IState {
+  direction: string;
+  translateX: number;
+  activeAnimation: TLiteralClassToggle;
+}
+
+type TCalcPos = {
+  type: 'calc-pos';
+  payload: {
+    translateX: number;
+  };
+};
+
+type TCalcValue = {
+  type: 'calc-value';
+  payload: IState;
+};
+
+type IPayload = TCalcPos | TCalcValue;
+
+const initState = {
+  direction: '',
+  translateX: 0,
+  activeAnimation: classToggle.disableClass,
+};
+
+const reducerFuction = (
+  state: IState = initState,
+  action: IPayload
+): IState => {
+  const { payload, type } = action;
+  switch (type) {
+    case 'calc-pos':
+      return {
+        ...state,
+        translateX: payload.translateX,
+      };
+    case 'calc-value':
+      return {
+        ...state,
+        translateX: payload.translateX,
+        direction: payload.direction,
+        activeAnimation: payload.activeAnimation,
+      };
+    default:
+      return state;
+  }
+};
 
 export const Testimonals = () => {
-  const [current, setCurrent] = useState<number>(2);
-  const [translateX, setTranslateX] = useState<number>(0);
+  const [slider, setChangeSlider] = useState<typeof testimonalData>([
+    ...testimonalData,
+  ]);
   const containerSliderRef = useRef<HTMLUListElement>(null);
+  const [disableBtn, setDisableBtn] = useState<boolean>(false);
+  const IsFirstRender = useRef<boolean>(true);
+  const [state, dispatch] = useReducer(reducerFuction, initState);
 
-  const slider = useMemo(() => {
-    const copyOfData = [...testimonalData];
-    return createSliderData<TTestimonalCard>(copyOfData);
+  useLayoutEffect(() => {
+    if (containerSliderRef.current) {
+      const width = calculateWidth(containerSliderRef);
+      dispatch({ type: 'calc-pos', payload: { translateX: width * 2 } });
+    }
+  }, []);
+
+  useMemo(() => {
+    const lastElements = slider.slice(0, 2);
+    const firstElements = slider.slice(slider.length - 2);
+    setChangeSlider((prev) => [...firstElements, ...prev, ...lastElements]);
+  }, []);
+
+  useEffect(() => {
+    const onTransitionRun = () => {
+      setDisableBtn(true);
+    };
+
+    containerSliderRef.current?.addEventListener(
+      'transitionrun',
+      onTransitionRun
+    );
+
+    return () =>
+      containerSliderRef.current?.removeEventListener(
+        'transitionrun',
+        onTransitionRun
+      );
   }, []);
 
   const moveLeftSlider = () => {
-    containerSliderRef.current!.style.transitionDuration = '400ms';
-    if (current <= 1) {
-      setTranslateX(0);
-      setCurrent(slider.length - MAX_NUMBER_TO_SLIDER_LEN);
-    } else {
-      const { translateXValue } = calculateTestimonalWidthSlider(
-        containerSliderRef,
-        current - 1
-      );
-
-      setCurrent((prev) => prev - 1);
-      setTranslateX(translateXValue);
+    if (containerSliderRef.current) {
+      const width = calculateWidth(containerSliderRef);
+      dispatch({
+        type: 'calc-value',
+        payload: {
+          direction: 'left',
+          translateX: Number(state.translateX) - width,
+          activeAnimation: classToggle.activeClass,
+        },
+      });
     }
   };
 
   const moveRightSlisder = () => {
-    containerSliderRef.current!.style.transitionDuration = '400ms';
-    if (current >= slider.length - MAX_NUMBER_TO_SLIDER_LEN) {
-      const { translateXValue } = calculateTestimonalWidthSlider(
-        containerSliderRef,
-        MAX_NUMBER_TO_SLIDER_LEN
-      );
-      setTranslateX(translateXValue);
-      setCurrent(1);
-    } else {
-      const { translateXValue } = calculateTestimonalWidthSlider(
-        containerSliderRef,
-        current + 1
-      );
-      setTranslateX(translateXValue);
-      setCurrent((prev) => prev + 1);
+    if (containerSliderRef.current) {
+      const width = calculateWidth(containerSliderRef);
+      dispatch({
+        type: 'calc-value',
+        payload: {
+          direction: 'right',
+          translateX: Math.abs(Number(state.translateX) + width),
+          activeAnimation: classToggle.activeClass,
+        },
+      });
     }
   };
 
-  useEffect(() => {
-    const transitionEnd = () => {
-      if (current <= 1) {
-        const { translateXValue } = calculateTestimonalWidthSlider(
-          containerSliderRef,
-          1
-        );
-        containerSliderRef.current!.style.transitionDuration = '0ms';
-        setTranslateX(translateXValue);
+  const transitionEnd = () => {
+    const width = calculateWidth(containerSliderRef);
+    setDisableBtn(false);
+
+    if (state.direction === 'left') {
+      dispatch({
+        type: 'calc-value',
+        payload: {
+          ...state,
+          translateX: state.translateX + width,
+          activeAnimation: classToggle.disableClass,
+        },
+      });
+
+      if (IsFirstRender.current) {
+        IsFirstRender.current = false;
+        return setChangeSlider((prev) => {
+          const lastElements = prev.splice(prev.length - 2);
+          return [lastElements[0], ...prev];
+        });
+      } else {
+        return setChangeSlider((prev) => {
+          const lastElements = prev.pop()!!;
+          return [lastElements, ...prev];
+        });
       }
+    }
 
-      if (current >= slider.length - MAX_NUMBER_TO_SLIDER_LEN) {
-        containerSliderRef.current!.style.transitionDuration = '0ms';
-        const { translateXValue } = calculateTestimonalWidthSlider(
-          containerSliderRef,
-          slider.length - MAX_NUMBER_TO_SLIDER_LEN
-        );
-        setTranslateX(translateXValue);
-      }
-    };
+    dispatch({
+      type: 'calc-value',
+      payload: {
+        ...state,
+        translateX: Math.abs(Number(state.translateX) - width),
+        activeAnimation: classToggle.disableClass,
+      },
+    });
 
-    document.addEventListener('transitionend', transitionEnd);
+    if (IsFirstRender.current) {
+      IsFirstRender.current = false;
+      // we can't delete two element, cause slide 3 is going to zero points and center is on 3 slide
+      return setChangeSlider((prev) => {
+        prev.splice(0, 1);
+        return [...prev];
+      });
+    } else {
+      return setChangeSlider((prev) => {
+        const firstElements = prev.shift()!!;
+        return [...prev, firstElements];
+      });
+    }
+  };
 
-    return () => {
-      document.removeEventListener('transitionend', transitionEnd);
-    };
-  }, [current]);
+  // img h-134 w-120
+  // section p-20
 
-  useLayoutEffect(() => {
-    const { firstRenderWidthToTranslate } = calculateTestimonalWidthSlider(
-      containerSliderRef!
-    );
+  // com w-195 h - 40
+  // img w-89 h-80
 
-    return setTranslateX(firstRenderWidthToTranslate);
-  }, []);
+  // slider w-300 h-400
 
   return (
-    <section className="p-20">
-      <div className="flex justify-between mb-44">
-        <div className="flex flex-col justify-between">
-          <div className="relative h-[calc(theme(spacing.36)+6px)]">
-            <div className="absolute h-[calc(theme(spacing.28)+8px)] w-[calc(theme(spacing.32)+6px)] left-0 bg-iconCommunity bg-cover bg-no-repeat" />
-            <h2 className="H2 absolute left-[calc(theme(spacing.20)-2px)] top-9">
-              Commuinity
-              <span className="text-primary-200">.</span>
-              <span />
-            </h2>
-          </div>
-          <div className="flex gap-[32px] ml-11">
-            <ArrowBtn
-              handleClick={moveLeftSlider}
-              {...ArrowBtnBingDirectionLeft.args}
-            />
-            <br />
-            <ArrowBtn
-              handleClick={moveRightSlisder}
-              {...ArrowBtnBingDirectionRight.args}
-            />
-          </div>
+    <section className="flex justify-center">
+      <div className="mb-44 grid-testimonal-cards margin_top_section">
+        <div
+          // mobileSmall:w-[245px] mobileSmall:h-[80px]
+          className="relative iPad:h-[calc(theme(spacing.32)-8px)] iPad:w-[calc(theme(spacing.96))]
+          mobileSmall:w-[calc(theme(spacing.60)+5px)] mobileSmall:h-20
+        testimonal-header"
+        >
+          <div
+            className="absolute iPad:h-[calc(theme(spacing.32)+6px)] iPad:w-[calc(theme(spacing.32)-8px)] left-0 bg-iconCommunity bg-contain bg-no-repeat
+            mobileSmall:w-[89px] mobileSmall:h-[80px]
+          "
+          />
+          <h2
+            className="mobileSmall:H2 absolute iPad:left-[calc(theme(spacing.20)-10px)] iPad:top-9 iPad:translate-y-0
+          mobileSmall:text-[32px] mobileSmall:leading-10 mobileSmall:left-[50px] mobileSmall:top-0 translate-y-1/2"
+          >
+            Commuinity
+            <span className="text-primary-200">.</span>
+            <span />
+          </h2>
         </div>
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden  max-w-[871px] w-full testimonal-slider">
           <ul
             ref={containerSliderRef}
-            className="flex gap-x-[32px] w-[918px]"
+            onTransitionEnd={transitionEnd}
+            className={classNames(
+              'flex gap-x-[theme(spacing.8)]',
+              state.activeAnimation
+            )}
             style={{
-              transform: `translate3d(${-translateX}px, 0, 0)`,
+              transform: `translate3d(${-state.translateX}px, 0, 0)`,
             }}
           >
-            {slider.map((item) => (
-              <TestimonalsCard key={item.id} {...item} />
+            {slider.map((item, index) => (
+              <TestimonalsCard key={index} {...item} />
             ))}
           </ul>
+        </div>
+        <div
+          className={classNames(
+            'flex gap-[theme(spacing.8)] justify-self-start items-end testimonal-btn',
+            {
+              'pointer-events-none [&>div]:invert [&>div]:transition-colors [&>div]:duration-00  [&>div]ease-linear':
+                disableBtn,
+            }
+          )}
+        >
+          <ArrowBtn
+            handleClick={moveLeftSlider}
+            {...ArrowBtnBingDirectionLeft.args}
+          />
+          <br />
+          <ArrowBtn
+            handleClick={moveRightSlisder}
+            {...ArrowBtnBingDirectionRight.args}
+          />
         </div>
       </div>
     </section>
